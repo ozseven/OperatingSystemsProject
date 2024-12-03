@@ -26,5 +26,6 @@ while True:
     methods = MethodService(slug)
     response = methods.getMethod()
     #Tarayıcıya veri gönderme
-    client_socket.sendall(response.encode('utf-8'))
+    if request.startswith("GET"):
+        client_socket.sendall(response.encode('utf-8'))
     client_socket.close()
