@@ -25,7 +25,9 @@ HTTP/1.1 200 OK
         </div>
         <div class="container">
             <form action="/upload" method="post" enctype="multipart/form-data">
-                <label for="files">Birden fazla dosya seçin:</label>
+                <p>name</p><input type="text" id="name"></input>
+                <label for="files"><p>\n</p>Birden fazla dosya seçin:</label><p>\n\n\n</p>
+                
                 <input type="file" id="files" name="files[]" multiple>
                 <button type="submit">Yükle</button>
             </form>
