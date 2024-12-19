@@ -32,16 +32,16 @@ def mainComponent(func):
 
 
 @mainComponent
-def fileComponent(fileList) -> str:
+def fileComponent(fileList,slug) -> str:
     if type(fileList) == str:
         body_items = fileList
     elif type(fileList) == list:
         body_items = [f"<li>{file}</li>" for file in fileList]
     else:
         body_items = ""
-
-    body = f'<a href="{""}">' +"<ul>" + "".join(body_items) + "</ul>"
-
+    body = "<ul>" + "".join(body_items) + "</ul>"
+    body +=f"""<br>
+            {formComponent(slug)}"""
     return body
 
 @mainComponent
@@ -64,16 +64,11 @@ def logComponent(list):
     body_items +="</ul>"
     return body_items
 
-def formComponent():
-    return """
-<form action="localhost:8080"  method="POST">
-    <div class="form-group">
-        <label for="ControlFile">Dosya seçiniz</label>
-        <br><br>
-        <input type="file" value="yükle" class="control-file" id="ControlFile" name="control_file">
-        <br><br>
-        <input type="submit" value="Kaydet">
-    </div>
-</form>
-    """
+def formComponent(slug):
+    return f"""<form  enctype="multipart/form-data" action="http://localhost:8080/files{slug}" method="POST">
+                    <label for="myfile">Select a file:</label>
+                    <input type="file" id="filename" name="filename">
+                    <button type="submit">Submit</button>
+                </form>
+                """
 

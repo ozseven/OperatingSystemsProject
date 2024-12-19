@@ -15,7 +15,7 @@ class DataView:
             return aboutComponent()
         elif self.slug.startswith("/files"):
             fileList = dataService.getFileList(self.slug)
-            return fileComponent(fileList)
+            return fileComponent(fileList,self.slug[6:])
         elif self.slug =="/logs":
             logsList = logList().logList
             return logComponent(logsList)

@@ -5,9 +5,9 @@ from core.middleware.loggingMiddleware.loggingMiddleware import loggingMiddlewar
 
 @loggingMiddleware
 @exceptionMiddleware
-def slugParser(request: str) -> str:
+def slugParser(request) -> str:
     lines = request.splitlines()
     line = lines[0]
-    _slug = line.replace("GET", "").replace(" ", "").replace("HTTP/1.1", "")
+    _slug = line.replace("GET", "").replace(" ", "").replace("HTTP/1.1", "").replace("POST","")
     _slug = parse.unquote(_slug)
     return _slug

@@ -9,5 +9,6 @@ def exceptionMiddleware(func):
             body =f"""<div class="alert alert-warning" role="alert">
   Hata!!! <strong>{e}</strong>
 </div>"""
+            print(e)
             return errorComponent(body)
     return wrapper
