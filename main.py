@@ -1,6 +1,5 @@
 import socket
 from urllib import parse
-
 from core.middleware.exceptionMiddleware.exceptionMiddleware import exceptionMiddleware
 from core.utils.slugParser import slugParser
 from view.dataView import DataView as dataView
