@@ -8,6 +8,6 @@ class DataService:
     @exceptionMiddleware
     def getFileList(directory:str):
             directory = directory[6:]
-            print("C:\ProjectFilesNKU" + directory)
-            return os.listdir("C:\ProjectFilesNKU" + directory)
+            print(r"C:\ProjectFilesNKU" + directory)
+            return os.listdir(r"C:\ProjectFilesNKU" + directory)
 

@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a0aa0b0-8cdb-403d-ac8f-27dcc34954c7" name="Changes" comment="Post method is finished.">
+    <list default="true" id="1a0aa0b0-8cdb-403d-ac8f-27dcc34954c7" name="Changes" comment="Get Request is finished.&#10;Post Request isn't finished. It gives a few errors but it will be finished soon">
+      <change afterPath="$PROJECT_DIR$/view/templateFiles/formComponent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pythonProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pythonProject.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/utils/binaryParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/utils/binaryParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataAccess/dataService.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataAccess/dataService.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/dataView.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/dataView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/templateFiles/mainHtmlComponent.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/templateFiles/mainHtmlComponent.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,25 +23,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <excluded-from-favorite>
-      <branch-storage>
-        <map>
-          <entry type="LOCAL">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="master" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </excluded-from-favorite>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
@@ -48,7 +41,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/ozseven/OperatingSystemsProject.git&quot;,
-    &quot;accountId&quot;: &quot;6b1974fc-39fc-4722-8b65-1239fa061700&quot;
+    &quot;accountId&quot;: &quot;b284d745-9540-4aec-bb15-a306ad2eaad6&quot;
   },
   &quot;recentNewPullRequestHead&quot;: {
     &quot;server&quot;: {
@@ -61,6 +54,9 @@
     &quot;repository&quot;: &quot;OperatingSystemsProject&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -72,31 +68,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.TestFile.executor": "Run",
-    "Python.dataService.executor": "Run",
-    "Python.httpConfig.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.mainHtmlComponent.executor": "Run",
-    "Python.methodServices.executor": "Run",
-    "Python.temp.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/OperatingSystemsProject1",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.TestFile.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.methodServices.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ahmet/PycharmProjects/OperatingSystemsProject&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ahmet\PycharmProjects\OperatingSystemsProject\view\templateFiles" />
       <recent name="C:\Users\Ahmet\PycharmProjects\pythonProject" />
     </key>
   </component>
@@ -111,7 +104,7 @@
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -128,8 +121,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.23726.102" />
-        <option value="bundled-python-sdk-5e1850174b45-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.23726.102" />
+        <option value="bundled-python-sdk-1b1018131e27-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.180" />
       </set>
     </attachedChunks>
   </component>
@@ -146,12 +138,7 @@
       <workItem from="1733149542086" duration="1859000" />
       <workItem from="1733220939301" duration="9573000" />
       <workItem from="1733653486216" duration="119000" />
-      <workItem from="1733653633765" duration="6871000" />
-      <workItem from="1734172224089" duration="9781000" />
-      <workItem from="1734184661455" duration="7335000" />
-      <workItem from="1734201474389" duration="1414000" />
-      <workItem from="1734202910839" duration="9164000" />
-      <workItem from="1734212288915" duration="762000" />
+      <workItem from="1733653633765" duration="6177000" />
     </task>
     <task id="LOCAL-00001" summary="Get Request is finished.">
       <option name="closed" value="true" />
@@ -169,40 +156,32 @@
       <option name="project" value="LOCAL" />
       <updated>1733659763223</updated>
     </task>
-    <task id="LOCAL-00003" summary="Get Request is finished.&#10;Post Request isn't finished. It gives a few errors but it will be finished soon">
-      <option name="closed" value="true" />
-      <created>1733659889602</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1733659889602</updated>
-    </task>
-    <task id="LOCAL-00004" summary="The software architecture is renewed.">
-      <option name="closed" value="true" />
-      <created>1734211955538</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1734211955538</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Post method is finished.">
-      <option name="closed" value="true" />
-      <created>1734647943891</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1734647943891</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="16530f2c-9284-439c-8f45-3d517e8e842a" value="TOOL_WINDOW" />
+        <entry key="fa7f8fb9-7632-4044-b15c-e00288d62646" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
+        <entry key="16530f2c-9284-439c-8f45-3d517e8e842a">
+          <value>
+            <State />
+          </value>
+        </entry>
         <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="fa7f8fb9-7632-4044-b15c-e00288d62646">
           <value>
             <State />
           </value>
@@ -213,19 +192,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Get Request is finished." />
     <MESSAGE value="Get Request is finished.&#10;Post Request isn't finished. It gives a few errors but it will be finished soon" />
-    <MESSAGE value="The software architecture is renewed." />
-    <MESSAGE value="Post method is finished." />
-    <option name="LAST_COMMIT_MESSAGE" value="Post method is finished." />
+    <option name="LAST_COMMIT_MESSAGE" value="Get Request is finished.&#10;Post Request isn't finished. It gives a few errors but it will be finished soon" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/OperatingSystemsProject$httpConfig.coverage" NAME="httpConfig Coverage Results" MODIFIED="1734204547323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/config/serverConfig" />
-    <SUITE FILE_PATH="coverage/OperatingSystemsProject1$main.coverage" NAME="main Coverage Results" MODIFIED="1734181414200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pythonProject$methodServices.coverage" NAME="methodServices Coverage Results" MODIFIED="1733238257192" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/OperatingSystemsProject$mainHtmlComponent.coverage" NAME="mainHtmlComponent Coverage Results" MODIFIED="1734203981563" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/view/templateFiles" />
     <SUITE FILE_PATH="coverage/pythonProject$TestFile.coverage" NAME="TestFile Coverage Results" MODIFIED="1733233227603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pythonProject$methodServices.coverage" NAME="methodServices Coverage Results" MODIFIED="1733238257192" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/OperatingSystemsProject1$main.coverage" NAME="main Coverage Results" MODIFIED="1733659626840" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pythonProject$main.coverage" NAME="main Coverage Results" MODIFIED="1733238378294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/OperatingSystemsProject$temp.coverage" NAME="temp Coverage Results" MODIFIED="1734204150126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/OperatingSystemsProject$dataService.coverage" NAME="dataService Coverage Results" MODIFIED="1734204544797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataAccess" />
-    <SUITE FILE_PATH="coverage/OperatingSystemsProject$main.coverage" NAME="main Coverage Results" MODIFIED="1734211803597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
