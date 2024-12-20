@@ -1,5 +1,3 @@
-
-
 def mainComponent(func):
     def wrapper(*args, **kwargs):
         body = f"""
@@ -94,13 +92,12 @@ def fileComponent(fileList, slug):
     if type(fileList) == str:
         body_items = fileList
     elif type(fileList) == list:
-        body_items = [f"<li><a href>{file}</li>" for file in fileList]
+        body_items = [f"<li class='list-group-item d-flex justify-content-between align-items-center' data-id={file}><a href='/files{slug[1:]}/{file}'>{file}<span class='badge badge-primary badge-pill'><a href='/download/{slug}/{file}'>  &#x2B73;</a></span></li> " for file in fileList]
     else:
         body_items = ""
-    body = "<ul>" + "".join(body_items) + "</ul>"
+    body = "<ol class='list-group'>" + "".join(body_items) + "</ol>"
     body += f"""<br>{formComponent(slug)}""" # formComponent fonksiyonunu çağırdık
     return body
-
 
 @mainComponent
 def homeComponent():
@@ -140,3 +137,7 @@ Content-Length:
         file +=f.read()
         return file
 
+def dowload():
+    return"""
+    <p>Merhan</p>
+    """

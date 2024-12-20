@@ -9,5 +9,5 @@ class DataService:
     def getFileList(directory:str):
             directory = directory[6:]
             print(r"C:\ProjectFilesNKU" + directory)
-            return os.listdir(r"C:\ProjectFilesNKU" + directory)
+            return os.listdir(r"C:\ProjectFilesNKU\\" + directory)
 
