@@ -19,27 +19,18 @@ if not os.path.exists("C:\\ProjectFilesNKU"):
 
 print(f"Sunucu {HOST}:{PORT} üzerinde çalışıyor...")
 
-
+@exceptionMiddleware
 def handle_get_request(client_socket, request):
-    """Handles GET requests."""
-    try:
         decoded_request = request.decode('utf-8')
         slug = slugParser(decoded_request)
-        view = dataView(slug).getTemplate()
-        client_socket.sendall(view.encode('utf-8'))
-    except Exception as e:
-        print(f"GET Hata: {e}")
-        client_socket.sendall("500 Internal Server Error".encode('utf-8'))
+        view= dataView(slug).getTemplate()
+        client_socket.sendall(view)
 
 
+@exceptionMiddleware
 def handle_post_request(client_socket, request):
-    """Handles POST requests."""
-    try:
         save_file_from_bytes(request)
         handle_get_request(client_socket, request[:100])  # You can send a similar response as GET for POST
-    except Exception as e:
-        print(f"POST Hata: {e}")
-        client_socket.sendall("500 Internal Server Error".encode('utf-8'))
 
 
 @exceptionMiddleware

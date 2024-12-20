@@ -1,3 +1,5 @@
+
+
 def mainComponent(func):
     def wrapper(*args, **kwargs):
         body = f"""
@@ -87,17 +89,16 @@ def formComponent(slug):
     </div>
     """
 
-
 @mainComponent
 def fileComponent(fileList, slug):
     if type(fileList) == str:
         body_items = fileList
     elif type(fileList) == list:
-        body_items = [f"<li>{file}</li>" for file in fileList]
+        body_items = [f"<li><a href>{file}</li>" for file in fileList]
     else:
         body_items = ""
     body = "<ul>" + "".join(body_items) + "</ul>"
-    body += f"""<br>{formComponent(slug)}"""  # formComponent fonksiyonunu çağırdık
+    body += f"""<br>{formComponent(slug)}""" # formComponent fonksiyonunu çağırdık
     return body
 
 
@@ -123,3 +124,19 @@ def logComponent(list):
         body_items += f"<li>{item}</li>"
     body_items += "</ul>"
     return body_items
+
+def downloadComponent(slug:str):
+    with open(rf"C:\ProjectFilesNKU\{slug}", 'r+b') as f:
+        print(f"C:\ProjectFilesNKU\{slug}")
+        _,fileName = slug.rsplit("/",1)
+        file =f"""HTTP/1.1 200 OK
+Content-Type: application/octet-stream
+Content-Disposition: attachment; filename="{fileName}"
+Content-Length: 
+
+
+""" .encode("UTF-8")
+
+        file +=f.read()
+        return file
+
