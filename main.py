@@ -3,6 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 import os
 from core.middleware.exceptionMiddleware.exceptionMiddleware import exceptionMiddleware
 from core.utils.binaryParser import save_file_from_bytes
+from core.utils.reciveFullRequest import receive_full_request
 from core.utils.slugParser import slugParser
 from view.dataView import DataView as dataView
 
@@ -45,7 +46,7 @@ def handle_post_request(client_socket, request):
 def handle_client(client_socket, client_address):
     """Handles client connection."""
     try:
-        request = client_socket.recv(2048)
+        request = receive_full_request(client_socket, 67000)
 
         if request.startswith(b"GET"):
             handle_get_request(client_socket, request)
