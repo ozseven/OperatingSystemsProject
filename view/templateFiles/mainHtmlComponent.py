@@ -92,10 +92,14 @@ def fileComponent(fileList, slug):
     if type(fileList) == str:
         body_items = fileList
     elif type(fileList) == list:
-        body_items = [f"<li class='list-group-item d-flex justify-content-between align-items-center' data-id={file}><a href='/files{slug[1:]}/{file}'>{file}<span class='badge badge-primary badge-pill'><a href='/download/{slug}/{file}'>  &#x2B73;</a></span></li> " for file in fileList]
+        body_items = [f"<li class='list-group-item d-flex justify-content-between align-items-center' data-id={file}><a href='/files{slug}/{file}'>{file}<span class='badge badge-primary badge-pill'><a href='/download{slug}/{file}'>  &#x2B73;</a></span></li> " for file in fileList]
     else:
         body_items = ""
-    body = "<ol class='list-group'>" + "".join(body_items) + "</ol>"
+    if "/" in slug:
+        parentDirectory, _ = slug.rsplit("/", 1)
+    else:
+        parentDirectory = slug
+    body = "<ol class='list-group'>"+f"<li class='list-group-item d-flex justify-content-between align-items-center'><a href='/files{parentDirectory}'>...</a></li>" + "".join(body_items) +f'<li><form method="GET" action="/createFolder{slug}"><input type="text" class="form-control" id="filename" name="filename" placeholder="Yeni klasör eklemek için ismini yazın"><button type="submit" class="btn btn-primary">Submit</button></form></li>'+ "</ol>"
     body += f"""<br>{formComponent(slug)}""" # formComponent fonksiyonunu çağırdık
     return body
 
@@ -123,8 +127,8 @@ def logComponent(list):
     return body_items
 
 def downloadComponent(slug:str):
-    with open(rf"C:\ProjectFilesNKU\{slug}", 'r+b') as f:
-        print(f"C:\ProjectFilesNKU\{slug}")
+    with open(rf"C:\ProjectFilesNKU{slug}", 'r+b') as f:
+        print(f"C:\ProjectFilesNKU{slug}")
         _,fileName = slug.rsplit("/",1)
         file =f"""HTTP/1.1 200 OK
 Content-Type: application/octet-stream
@@ -137,7 +141,28 @@ Content-Length:
         file +=f.read()
         return file
 
-def dowload():
-    return"""
-    <p>Merhan</p>
+
+def redirectComponent(slug:str):
+    body = f"""
+    <!DOCTYPE html>
+        <html lang="tr">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Redirecting...</title>
+            <meta http-equiv="refresh" content="1; url=http://localhost:8080{slug}">
+        </head>
+        <body>
+            <h1>Klasör başarıyla oluştu!!!</h1>
+            <p>Şimdi yönlendiriliyorsunuz <a href="/{slug}">here</a>.</p>
+        </body>
+        </html>
     """
+    response = (
+    "HTTP/1.1 200 OK\r\n"
+    "Content-Type: text/html; charset=utf-8\r\n"
+    f"Content-Length: {len(body.encode('utf-8'))}\r\n"
+    "\r\n"
+    f"{body}"
+)
+    return response

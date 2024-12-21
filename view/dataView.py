@@ -1,6 +1,6 @@
-from view.templateFiles.formComponent import formComponent  # Doğru şekilde import edin
+
 from view.templateFiles.mainHtmlComponent import homeComponent, aboutComponent, fileComponent, errorComponent, \
-    logComponent, downloadComponent
+    logComponent, downloadComponent,formComponent,redirectComponent
 from dataAccess.dataService import DataService as dataService
 from core.middleware.loggingMiddleware.loggingMiddleware import LogList as logList
 
@@ -24,5 +24,9 @@ class DataView:
         elif self.slug.startswith("/download"):
             print(self.slug[9:])
             return downloadComponent(self.slug[9:])
+        elif self.slug.startswith("/createFolder"):
+            dataService.createFolder(self.slug)
+            redirectSlug = self.slug.replace("createFolder", "files").replace("?filename=", "/")
+            return redirectComponent(redirectSlug).encode("UTF-8")
         else:
             return errorComponent("Gitmek istediğiniz adresi kontrol edin.").encode("UTF-8")
