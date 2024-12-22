@@ -33,9 +33,13 @@ def handle_post_request(client_socket, request):
         handle_get_request(client_socket, request[:100])  # You can send a similar response as GET for POST
 
 
-@exceptionMiddleware
 def handle_client(client_socket, client_address):
-    """Handles client connection."""
+    """
+    İstemci tarafından gelen kodları uygun http methoduna göre işler.
+    :param client_socket: İstemciye bağlı sokettir.
+    :param client_address: Bağlı olunan istemci adresidir.
+    :return: None: Fonksiyon herhangi birşey dönmez.
+    """
     try:
         request = receive_full_request(client_socket, 67000)
 
