@@ -9,47 +9,53 @@ def mainComponent(func):
             <title>Simple Web Server</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
             <style>
-                body {{
-                    font-family: 'Arial', sans-serif;
-                    background-color: #f8f9fa;
-                    color: #333;
-                }}
-                .container {{
-                    margin-top: 50px;
-                }}
-                .page-title {{
-                    text-align: center;
-                    font-size: 2rem;
-                    margin-bottom: 20px;
-                    color: #0056b3;
-                }}
-                .form-container {{
-                    background-color: #fff;
-                    padding: 30px;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                }}
-                .form-container input {{
-                    margin-bottom: 15px;
-                }}
-                .form-container button {{
-                    background-color: #007bff;
-                    color: white;
-                    border: none;
-                    padding: 10px 15px;
-                    border-radius: 5px;
-                    cursor: pointer;
-                }}
-                .form-container button:hover {{
-                    background-color: #0056b3;
-                }}
-                .footer {{
-                    text-align: center;
-                    margin-top: 30px;
-                    font-size: 0.9rem;
-                    color: #777;
-                }}
-            </style>
+        body {{
+            font-family: Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            animation: fadeInAnimation ease 3s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }}
+
+        @keyframes fadeInAnimation {{
+            0% {{
+                opacity: 0;
+            }}
+
+            100% {{
+                opacity: 1;
+            }}
+        }}
+        .container {{
+            text-align: center;
+        }}
+        a {{
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #ff0000e6;
+            border-radius: 5px;
+            font-size: 16px;
+        }}
+        a:hover {{
+            background-color: #b30000;
+        }}
+        footer {{
+ 			position: fixed;
+ 			bottom: 0px;
+ 			left: 0px;
+ 			width: 100%;
+            padding-bottom:20px;
+}}
+        </style>
         </head>
         <body>
             <div class="container">
@@ -105,7 +111,17 @@ def fileComponent(fileList, slug):
 
 @mainComponent
 def homeComponent():
-    return "<div class='page-title'>Welcome to the Home Page</div>"
+    return f"""
+   <body>
+    <div class="container">
+        <h1>Ana Sayfaya Hoşgeldiniz</h1>
+        <p>Dizine gitmek için tıklayınız.</p>
+        <a href="/files">/files</a>
+        <footer>Hazırlayanlar: Ahmet Özseven, Ahmet Hakan Özkurt, Berkay Emikönel, Yiğit Kadayıfçı, Hüseyin Berke Ok, Kerem Batı</footer>
+    </div>
+</body>
+"""
+    
 
 
 @mainComponent
