@@ -5,11 +5,11 @@ from core.middleware.exceptionMiddleware.exceptionMiddleware import exceptionMid
 
 
 class DataService:
-    @exceptionMiddleware
     def getFileList(directory:str):
-            directory = directory[6:]
-            print("C:\ProjectFilesNKU" + directory)
-            return os.listdir("C:\ProjectFilesNKU\\" + directory)
+        print("C:\ProjectFilesNKU" + directory)
+        return os.listdir("C:\ProjectFilesNKU" + directory)
+
+
     @exceptionMiddleware
     def createFolder(directoryParameter:str):
         directory = directoryParameter[13:].replace("?filename=", "\\")

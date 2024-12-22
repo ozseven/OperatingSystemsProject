@@ -1,3 +1,6 @@
+from core.middleware.exceptionMiddleware.exceptionMiddleware import exceptionMiddleware
+
+@exceptionMiddleware
 def mainComponent(func):
     def wrapper(*args, **kwargs):
         body = f"""
@@ -78,7 +81,6 @@ def mainComponent(func):
 
     return wrapper
 
-
 def formComponent(slug):
     return f"""
     <div class="form-container">
@@ -98,16 +100,20 @@ def fileComponent(fileList, slug):
     if type(fileList) == str:
         body_items = fileList
     elif type(fileList) == list:
-        body_items = [f"<li class='list-group-item d-flex justify-content-between align-items-center' data-id={file}><a href='/files{slug}/{file}'>{file}<span class='badge badge-primary badge-pill'><a href='/download{slug}/{file}'>  &#x2B73;</a></span></li> " for file in fileList]
+        body_items = [
+            f"<li class='list-group-item d-flex justify-content-between align-items-center' data-id={file}><a href='/files{slug}/{file}'>{file}<span class='badge badge-primary badge-pill'><a href='/download{slug}/{file}'>  &#x2B73;</a></span></li> "
+            for file in fileList]
     else:
         body_items = ""
     if "/" in slug:
         parentDirectory, _ = slug.rsplit("/", 1)
     else:
         parentDirectory = slug
-    body = "<ol class='list-group'>"+f"<li class='list-group-item d-flex justify-content-between align-items-center'><a href='/files{parentDirectory}'>...</a></li>" + "".join(body_items) +f'<li><form method="GET" action="/createFolder{slug}"><input type="text" class="form-control" id="filename" name="filename" placeholder="Yeni klasör eklemek için ismini yazın"><button type="submit" class="btn btn-primary">Submit</button></form></li>'+ "</ol>"
-    body += f"""<br>{formComponent(slug)}""" # formComponent fonksiyonunu çağırdık
+    body = "<ol class='list-group'>" + f"<li class='list-group-item d-flex justify-content-between align-items-center'><a href='/files{parentDirectory}'>...</a></li>" + "".join(
+        body_items) + f'<li><form method="GET" action="/createFolder{slug}"><input type="text" class="form-control" id="filename" name="filename" placeholder="Yeni klasör eklemek için ismini yazın"><button type="submit" class="btn btn-primary">Submit</button></form></li>' + "</ol>"
+    body += f"""<br>{formComponent(slug)}"""  # formComponent fonksiyonunu çağırdık
     return body
+
 
 @mainComponent
 def homeComponent():
@@ -125,11 +131,6 @@ def homeComponent():
 
 
 @mainComponent
-def errorComponent(error: str):
-    return f"<div class='page-title'>Error</div><p>{error}</p>"
-
-
-@mainComponent
 def aboutComponent():
     return "<div class='page-title'>About Us</div><p>This is the about page.</p>"
 
@@ -142,23 +143,24 @@ def logComponent(list):
     body_items += "</ul>"
     return body_items
 
-def downloadComponent(slug:str):
+@exceptionMiddleware
+def downloadComponent(slug: str):
     with open(rf"C:\ProjectFilesNKU{slug}", 'r+b') as f:
         print(f"C:\ProjectFilesNKU{slug}")
-        _,fileName = slug.rsplit("/",1)
-        file =f"""HTTP/1.1 200 OK
+        _, fileName = slug.rsplit("/", 1)
+        file = f"""HTTP/1.1 200 OK
 Content-Type: application/octet-stream
 Content-Disposition: attachment; filename="{fileName}"
 Content-Length: 
 
 
-""" .encode("UTF-8")
+""".encode("UTF-8")
 
-        file +=f.read()
+        file += f.read()
         return file
 
-
-def redirectComponent(slug:str):
+@exceptionMiddleware
+def redirectComponent(slug: str):
     body = f"""
     <!DOCTYPE html>
         <html lang="tr">
@@ -175,10 +177,10 @@ def redirectComponent(slug:str):
         </html>
     """
     response = (
-    "HTTP/1.1 200 OK\r\n"
-    "Content-Type: text/html; charset=utf-8\r\n"
-    f"Content-Length: {len(body.encode('utf-8'))}\r\n"
-    "\r\n"
-    f"{body}"
-)
+        "HTTP/1.1 200 OK\r\n"
+        "Content-Type: text/html; charset=utf-8\r\n"
+        f"Content-Length: {len(body.encode('utf-8'))}\r\n"
+        "\r\n"
+        f"{body}"
+    )
     return response
