@@ -7,6 +7,11 @@ from core.utils.slugParser import slugParser
 
 @exceptionMiddleware
 def save_file_from_bytes(request: bytes):
+    """
+    Bu fonksiyon byte tipinde gelen nesneleri dosya ismi, kaydedilmek istenilen dizin ve dosya olarak ayrıştırır ve istenilen klasöre kaydeder.
+    :param request: Byte tipinde nesneler kabul edilir
+    :return: None Bu fonksiyon herhangi bir dönüş değeri bulundurmaz.
+    """
     slug =slugParser(request[:150].decode('utf-8'))
     fileNameIndex = request.find(b"filename")
     fileName , content =request[fileNameIndex+21:].split(b'"\r\n',1)

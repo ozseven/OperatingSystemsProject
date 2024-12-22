@@ -1,6 +1,13 @@
 
 
-def receive_full_request(client_socket, buffer_size = 4096):
+def receive_full_request(client_socket, buffer_size = 65550):
+    """
+    Bu fonksiyon, TCP üzerinden gelen istekleri alır ve birleştirir.
+    İçerik uzunluğu bilgisi sağlandığında döngü sonlanır.
+    :param client_socket: Verilerin alındığı soket nesnesi
+    :param buffer_size: Her defasında alınacak veri miktarı (TCP üzerinden tek seferde aktarılabilecek maksimum paket boyutu 66550'dir.)
+    :return: Tüm paketleri birleştirilmiş http isteği.
+    """
 
     request_data = b""
     headers_received = False

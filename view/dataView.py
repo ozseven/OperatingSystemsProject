@@ -10,6 +10,10 @@ class DataView:
         self.slug = slug
     @exceptionMiddleware
     def getTemplate(self):
+        """
+        Bu fonksiyon, sağlanan slug nesnesi ile kullanıcıya ilgili html componentlerinden hangisinin dönülmesi gerektiğini belirler
+        :return: İlgi sayfa html componenti
+        """
         if self.slug == "/":
             return homeComponent().encode("UTF-8")
         elif self.slug == "/about":
