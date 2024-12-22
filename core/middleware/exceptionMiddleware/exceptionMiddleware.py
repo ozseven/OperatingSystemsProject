@@ -3,12 +3,14 @@ def exceptionMiddleware(func):
     def wrapper( *args, **kwargs):
         try:
             return func( *args, **kwargs)
+        except FileNotFoundError as e:
+            return e
         except Exception as e:
-            print(e)
-            return errorComponent(str(e))
+            print("error componnet:" + str(e))
+            return errorComponent(e)
     return wrapper
 
-def errorComponent(error: str):
+def errorComponent(error):
     body =f"""<!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +20,7 @@ def errorComponent(error: str):
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <body>
 <div class="container mt-4 alert alert-danger" role="alert">
-  Hata!!!<a href="#" class="alert-link"> {error}</a>. Lütfen hata mesajını dikkate alınız.
+  Hata!!!<a href="#" class="alert-link"> {str(error)}</a>. Lütfen hata mesajını dikkate alınız.
 </div>
 </body>
 

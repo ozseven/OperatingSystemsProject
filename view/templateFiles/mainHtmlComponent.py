@@ -75,7 +75,6 @@ def mainComponent(func):
 
     return wrapper
 
-@exceptionMiddleware
 def formComponent(slug):
     return f"""
     <div class="form-container">
