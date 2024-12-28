@@ -7,7 +7,7 @@ def exceptionMiddleware(func):
     """
     def wrapper( *args, **kwargs):
         try:
-            return func( *args, **kwargs)
+            return func(*args, **kwargs)
         except FileNotFoundError as e:
             return errorComponent(str(e))
         except Exception as e:

@@ -1,4 +1,8 @@
+from core.guard import authentication
+from core.guard.authentication import authenticate
 from core.middleware.exceptionMiddleware.exceptionMiddleware import exceptionMiddleware
+from dataAccess.dataService import DataService
+
 
 @exceptionMiddleware
 def mainComponent(func):
@@ -95,7 +99,9 @@ def fileComponent(fileList, slug):
         body_items = fileList
     elif type(fileList) == list:
         body_items = [
-            f"<li class='list-group-item d-flex justify-content-between align-items-center' data-id={file}><a href='/files{slug}/{file}'>{file}<span class='badge badge-primary badge-pill'><a href='/download{slug}/{file}'>  &#x2B73;</a></span></li> "
+            f"<li class='list-group-item d-flex justify-content-between align-items-center' data-id={file}><a href='/files{slug}/{file}'>{file}</a><span class='ms-auto rounded-right badge badge-primary badge-pill'><a href='/download{slug}/{file}'>&#x2B73;</a></span>"
+            +(f"<span class='badge badge-danger badge-pill '><a href='/delete{slug}{file}'>&#x1F5D1;</a></span>" if authentication.isAuthenticated else "")
+            +"</li>"
             for file in fileList]
     else:
         body_items = ""
@@ -185,18 +191,16 @@ def logComponent(list):
 
 @exceptionMiddleware
 def downloadComponent(slug: str):
-    with open(rf"C:\ProjectFilesNKU{slug}", 'r+b') as f:
-        print(f"C:\ProjectFilesNKU{slug}")
+        fileBytes = DataService.downloadFile(slug)
         _, fileName = slug.rsplit("/", 1)
         file = f"""HTTP/1.1 200 OK
 Content-Type: application/octet-stream
 Content-Disposition: attachment; filename="{fileName}"
-Content-Length: 
 
 
 """.encode("UTF-8")
 
-        file += f.read()
+        file += fileBytes
         return file
 
 @exceptionMiddleware
@@ -224,3 +228,11 @@ def redirectComponent(slug: str):
         f"{body}"
     )
     return response
+
+@mainComponent
+def loginComponent():
+    return """    <form method="post" action="http://localhost:8080/admin">
+    <input type="text" name="username" placeholder="username">
+    <input type="password" name="password" placeholder="password">
+    <button type="submit">Giriş</button>
+</form>"""

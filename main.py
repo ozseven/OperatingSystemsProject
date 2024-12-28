@@ -6,6 +6,7 @@ from core.utils.binaryParser import save_file_from_bytes
 from core.utils.reciveFullRequest import receive_full_request
 from core.utils.slugParser import slugParser
 from view.dataView import DataView as dataView
+from view.postHandle import postHandle
 
 HOST = '127.0.0.1'
 PORT = 8080
@@ -29,8 +30,8 @@ def handle_get_request(client_socket, request):
 
 @exceptionMiddleware
 def handle_post_request(client_socket, request):
-        save_file_from_bytes(request)
-        handle_get_request(client_socket, request[:100])  # You can send a similar response as GET for POST
+        postHandle(request)
+        handle_get_request(client_socket, request[:100])
 
 
 def handle_client(client_socket, client_address):
@@ -54,7 +55,6 @@ def handle_client(client_socket, client_address):
 
     except Exception as e:
         print(f"Hata: {e}")
-        client_socket.sendall("500 Internal Server Error".encode('utf-8'))
 
     finally:
         client_socket.close()
@@ -62,7 +62,7 @@ def handle_client(client_socket, client_address):
 
 if __name__ == "__main__":
     # Thread pool for handling multiple client requests
-    executor = ThreadPoolExecutor(max_workers=5)
+    executor = ThreadPoolExecutor(max_workers=155)
 
     while True:
         client_socket, client_address = server_socket.accept()
