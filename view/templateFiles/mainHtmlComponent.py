@@ -62,8 +62,7 @@ def mainComponent(func):
             <div class="container">
                 {func(*args, **kwargs)}
             </div>
-            <div class="footer">
-                <p>&copy; 2024 Your Website. All rights reserved.</p>
+            <div class="footer"> 
             </div>
         </body>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -82,13 +81,13 @@ def mainComponent(func):
 def formComponent(slug):
     return f"""
     <div class="form-container">
-        <h3>Upload Your File</h3>
+        <h3>Dosyanızı Yükleyin</h3>
         <form enctype="multipart/form-data" action="http://localhost:8080/files{slug}" method="POST">
             <div class="mb-3">
-                <label for="myfile" class="form-label">Select a file:</label>
+                <label for="myfile" class="form-label">Bir Dosya Seçin:</label>
                 <input type="file" class="form-control" id="filename" name="filename">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Yükle</button>
         </form>
     </div>
     """
@@ -110,7 +109,7 @@ def fileComponent(fileList, slug):
     else:
         parentDirectory = slug
     body = "<ol class='list-group'>" + f"<li class='list-group-item d-flex justify-content-between align-items-center'><a href='/files{parentDirectory}'>...</a></li>" + "".join(
-        body_items) + f'<li><form method="GET" action="/createFolder{slug}"><input type="text" class="form-control" id="filename" name="filename" placeholder="Yeni klasör eklemek için ismini yazın"><button type="submit" class="btn btn-primary">Submit</button></form></li>' + "</ol>"
+        body_items) + f'<li><form method="GET" action="/createFolder{slug}"><input type="text" class="form-control" id="filename" name="filename" placeholder="Yeni klasör eklemek için ismini yazın"><button type="submit" class="btn btn-primary">Oluştur</button></form></li>' + "</ol>"
     body += f"""<br>{formComponent(slug)}"""  # formComponent fonksiyonunu çağırdık
     return body
 
@@ -158,22 +157,37 @@ def homeComponent():
         a:hover {{
             background-color: #b30000;
         }}
+        .admin-button {{
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #2575fc;
+            border-radius: 5px;
+            font-size: 16px;
+        }}
+        .admin-button:hover {{
+            background-color: #6a11cb;
+        }}
         footer {{
- 			position: fixed;
- 			bottom: 0px;
- 			left: 0px;
- 			width: 100%;
-            padding-bottom:20px;
-}}
-        </style>
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            padding-bottom: 20px;
+        }}
+    </style>
     <div class="container">
         <h1>Ana Sayfaya Hoşgeldiniz</h1>
         <p>Dizine gitmek için tıklayınız.</p>
-        <a href="/files">/files</a>
+        <a href="/files">Dosyalar</a>
+        <a href="/admin" class="admin-button">Yönetici Girişi</a>
         <footer>Hazırlayanlar: Ahmet Özseven, Ahmet Hakan Özkurt, Berkay Emikönel, Yiğit Kadayıfçı, Hüseyin Berke Ok, Kerem Batı</footer>
     </div>
 """
-    
+
+
 
 
 @mainComponent
@@ -231,8 +245,100 @@ def redirectComponent(slug: str):
 
 @mainComponent
 def loginComponent():
-    return """    <form method="post" action="http://localhost:8080/admin">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <button type="submit">Giriş</button>
-</form>"""
+    return """    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            color: #333;
+        }
+
+        .login-container {
+            background: #ffffffcc; /* Semi-transparent white */
+            color: #333;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .login-container h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .login-container input {
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .login-container button {
+            padding: 0.8rem;
+            background-color: #2575fc;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .login-container button:hover {
+            background-color: #6a11cb;
+        }
+
+        .login-container a {
+            text-align: center;
+            display: block;
+            margin-top: 1rem;
+            color: #2575fc;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Giriş Yap</h1>
+        <form method="post" action="http://localhost:8080/admin">
+            <input type="text" name="username" placeholder="Kullanıcı Adı" required>
+            <input type="password" name="password" placeholder="Şifre" required>
+            <button type="submit">Giriş</button>
+        </form>
+    </div>
+</body>
+</html>
+"""

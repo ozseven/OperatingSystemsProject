@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a0aa0b0-8cdb-403d-ac8f-27dcc34954c7" name="Changes" comment="Get Request is finished.&#10;Post Request isn't finished. It gives a few errors but it will be finished soon">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_12_2024_01_24_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_12_2024_01_24__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/utils/reciveFullRequest.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/utils/reciveFullRequest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataAccess/dataService.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataAccess/dataService.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/templateFiles/mainHtmlComponent.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/templateFiles/mainHtmlComponent.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,22 +34,22 @@
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {}
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/ozseven/OperatingSystemsProject.git&quot;,
-    &quot;accountId&quot;: &quot;727c328a-d62a-41d0-8e40-ffb1c1e12921&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ozseven/OperatingSystemsProject.git",
+    "accountId": "b284d745-9540-4aec-bb15-a306ad2eaad6"
   },
-  &quot;recentNewPullRequestHead&quot;: {
-    &quot;server&quot;: {
-      &quot;useHttp&quot;: false,
-      &quot;host&quot;: &quot;github.com&quot;,
-      &quot;port&quot;: null,
-      &quot;suffix&quot;: null
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
     },
-    &quot;owner&quot;: &quot;ozseven&quot;,
-    &quot;repository&quot;: &quot;OperatingSystemsProject&quot;
+    "owner": "ozseven",
+    "repository": "OperatingSystemsProject"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -114,8 +117,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-PY-242.21829.153" />
-        <option value="bundled-python-sdk-464836ebc622-b74155a9e76b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.21829.153" />
+        <option value="bundled-python-sdk-495700d161d3-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.220" />
       </set>
     </attachedChunks>
   </component>
