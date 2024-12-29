@@ -10,16 +10,18 @@ def threadLockMiddleware(func):
     def wrapper(*args):
         while True:
             if args in LocksManager.locks:
-                print('Dosya Kilitli')
+                print(f'Dosya Kilitli:{args}')
                 time.sleep(0.1)
                 continue
             else:
-                print("Dosya kilit listesine ekelendi")
+                print(f"Dosya kilit listesine ekelendi:{args}")
                 LocksManager.locks.add(args)
                 with LocksManager.lock:
-                    func(*args)
-                print('Lock silindi')
-                LocksManager.locks.remove(args)
+                    try:
+                        func(*args)
+                    finally:
+                        print(f'Lock silindi:{args}')
+                        LocksManager.locks.remove(args)
             return func(*args)
     return wrapper
 

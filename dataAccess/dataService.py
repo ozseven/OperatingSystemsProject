@@ -1,6 +1,4 @@
 import os
-
-from core.middleware.exceptionMiddleware.exceptionMiddleware import exceptionMiddleware
 from core.middleware.threadingMiddleware.threadLockMiddleware import threadLockMiddleware
 
 

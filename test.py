@@ -2,12 +2,12 @@ import threading
 import requests
 
 def make_download_request():
-        response = requests.get("http://localhost:8080/download/WIN_20240301_16_45_28_Pro.mp4")
+        response = requests.get("http://localhost:8080/download//Bolum-02.pdf")
         print(f"download:ilk dosya {response.status_code}")
 
 
 def make_download_request2():
-    response = requests.get("http://localhost:8080/download/WIN_20240301_17_02_25_Pro.mp4")
+    response = requests.get("http://localhost:8080/download//Bolum09.pdf")
     print(f"download:ikinci dosya {response.status_code}")
 
 def make_get_request():

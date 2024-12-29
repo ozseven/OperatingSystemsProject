@@ -62,7 +62,7 @@ def handle_client(client_socket, client_address):
 
 if __name__ == "__main__":
     # Thread pool for handling multiple client requests
-    executor = ThreadPoolExecutor(max_workers=155)
+    executor = ThreadPoolExecutor(max_workers=150)
 
     while True:
         client_socket, client_address = server_socket.accept()

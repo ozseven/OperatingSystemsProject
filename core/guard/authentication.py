@@ -2,7 +2,7 @@ isAuthenticated = False
 
 
 def authenticate(username, password):
-    global isAuthenticated  # Global değişkeni kullanacağınızı belirtin
+    global isAuthenticated
     if username == "admin" and password == "pass":
-        isAuthenticated = True  # Global değişkeni değiştir
+        isAuthenticated = True
         print(isAuthenticated)
